@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Abdulrahman - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
+            margin: 0 auto 20px;
+            background: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #95a5a6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .job-title, .degree {
+            font-size: 1.3em;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company, .school {
+            font-size: 1.1em;
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #3498db;
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #2980b9;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .print-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-button {
+                display: none;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-img">👤</div>
+            <h1 class="name">Muhammad Abdulrahman</h1>
+            <p class="title">Data Science Graduate Student & Research Assistant</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>mabdulrahman@sabanciuniv.edu</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+90 552 835 91 98</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>linkedin.com/in/muhammad-abdulrahman</span>
+                </div>
+                <div class="contact-item">
+                    <span>💻</span>
+                    <span>github.com/muhammad-abdulrahman</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Istanbul, Turkey</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section class="section">
+                <h2 class="section-title">About Me</h2>
+                <p class="about-text">
+                    MSc Data Science student at Sabancı University with a strong foundation in Industrial Engineering and machine learning. 
+                    Currently specializing in computational biology and bioinformatics, with hands-on experience developing DNA language models 
+                    using advanced deep learning techniques. Passionate about applying machine learning to solve complex problems in healthcare 
+                    and genomics. Experienced in large-scale distributed training, HPC environments, and transforming biological data into 
+                    actionable insights through innovative AI approaches.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">Research Assistant</h3>
+                    <p class="company">Abdeli Lab, Sabancı University</p>
+                    <p class="date">September 2024 - Present</p>
+                    <p class="description">
+                        Working on DNA language model development for genomic sequence analysis using advanced deep learning techniques. 
+                        Implementing machine learning approaches for medical and biological applications, focusing on transformer-based 
+                        architectures for biological data. Collaborating on research projects in computational biology and bioinformatics 
+                        with emphasis on reproducible research practices.
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Industrial Engineering Intern</h3>
+                    <p class="company">Eartech Information Technology</p>
+                    <p class="date">August 2023 - Present</p>
+                    <p class="description">
+                        Collected and analyzed large-scale sales and survey datasets to derive actionable business insights. 
+                        Performed demand forecasting and inventory optimization using statistical modeling and machine learning techniques. 
+                        Created comprehensive reports and data visualizations for management presentations, improving decision-making processes.
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Data Science Intern</h3>
+                    <p class="company">Dresden Optics</p>
+                    <p class="date">June 2023 - August 2023</p>
+                    <p class="description">
+                        Cleaned and analyzed customer survey data to identify patterns and anomalies using advanced data preprocessing techniques. 
+                        Performed sentiment analysis and topic classification with machine learning models to extract customer insights. 
+                        Delivered concise data reports with visual analytics, enabling data-driven marketing strategies.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <h3 class="degree">MSc Data Science</h3>
+                    <p class="school">Sabancı University, Istanbul, Turkey</p>
+                    <p class="date">September 2024 - Present</p>
+                    <p class="description">
+                        Focus: Machine Learning, Deep Learning, and Applications in Bioinformatics. Currently working on medical-related 
+                        ML problems and developing DNA language models using transformer architectures. Specializing in computational 
+                        biology and advanced AI techniques for genomic data analysis.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="degree">BSc Industrial Engineering (50% Scholarship)</h3>
+                    <p class="school">Sabancı University, Istanbul, Turkey</p>
+                    <p class="date">September 2020 - June 2024</p>
+                    <p class="description">
+                        Relevant Coursework: Operations Research, Statistical Modeling, Decision Analysis, Quality Control, Operations Management, 
+                        Simulation, Supply Chain Management, Machine Learning, Data Analysis & Visualization, Manufacturing Processes, 
+                        Computer-Aided Design (CAD). Strong foundation in optimization and statistical methods.
+                    </p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Projects & Research</h2>
+                
+                <div class="experience-item">
+                    <h3 class="job-title">DNA Language Modeling with VQ-VAE and BERT</h3>
+                    <p class="company">Ongoing Research Project</p>
+                    <p class="date">Ongoing</p>
+                    <p class="description">
+                        Developing a custom tokenizer using VQ-VAE to compress genomic and DNA sequence data into discrete tokens for 
+                        transformer-based modeling. Implementing BERT architecture for DNA sequence prediction and embedding extraction 
+                        in biological datasets. Utilizing PyTorch, Snakemake, and SLURM on HPC clusters with GPU acceleration for 
+                        large-scale experiments. Applied distributed training, model checkpointing, and reproducibility best practices.
+                    </p>
+                </div>
+
+                <div class="experience-item">
+                    <h3 class="job-title">Fuel Consumption Modeling for Route Planning of Heavy-Duty Trucks</h3>
+                    <p class="company">Sabancı University</p>
+                    <p class="date">October 2023 - June 2024</p>
+                    <p class="description">
+                        Conducted comprehensive dataset cleaning and standardization to ensure data accuracy and reliability. 
+                        Applied cross-validation and hyperparameter tuning (grid/random search) to optimize model performance. 
+                        Engineered time-series features capturing temporal dynamics in fuel consumption patterns for improved prediction accuracy.
+                    </p>
+                </div>
+
+            <section class="section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming & Tools</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">R</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Microsoft Office</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Machine Learning & HPC</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Hugging Face Transformers</span>
+                            <span class="skill-tag">Snakemake</span>
+                            <span class="skill-tag">SLURM</span>
+                            <span class="skill-tag">CUDA</span>
+                            <span class="skill-tag">Apptainer</span>
+                            <span class="skill-tag">Model Optimization</span>
+                            <span class="skill-tag">Distributed Training</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Data Analysis</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">Statistical Modeling</span>
+                            <span class="skill-tag">Data Cleaning</span>
+                            <span class="skill-tag">Feature Engineering</span>
+                            <span class="skill-tag">Time Series Forecasting</span>
+                            <span class="skill-tag">Data Visualization</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Languages & Specializations</h4>
+                        <div class="skill-list">
+                            <span class="skill-tag">English (Native)</span>
+                            <span class="skill-tag">Turkish (Beginner)</span>
+                            <span class="skill-tag">Bioinformatics</span>
+                            <span class="skill-tag">Computational Biology</span>
+                            <span class="skill-tag">Operations Research</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="print-button" onclick="window.print()">🖨️ Print CV</button>
+
+    <script>
+        // Add smooth scrolling for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            // Observe all sections for scroll animations
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
